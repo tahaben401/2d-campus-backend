@@ -38,6 +38,32 @@ app.get('/fillTable',async (req, res) => {
       message: 'table is filled!'
     });
 });
+app.get('/fillTable/:filename', async (req, res) => {
+  try {
+      
+      const fileNameStr = req.params.filename;
+      const TABLE_NAME = fileNameStr; 
+      
+      const JSON_FILE_PATH = path.join(process.cwd(), 'data', `${fileNameStr}.json`);
+
+      console.log(`Tentative d'import de ${JSON_FILE_PATH} vers la table ${TABLE_NAME}...`);
+
+      const result = await importJsonToSupabase(TABLE_NAME, JSON_FILE_PATH, 0);
+      
+      res.json({ 
+          success: true,
+          message: `Table ${TABLE_NAME} remplie avec succès!`,
+          details: result
+      });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ 
+          success: false,
+          message: 'Erreur lors de l\'importation',
+          error: error.message 
+      });
+  }
+});
 
 
 
