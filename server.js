@@ -7,6 +7,7 @@ import errorConverter from "./src/middleware/errorConverter.js";
 import userRouter from "./src/routes/authRouter.js";
 import cors from "cors"
 import rateLimiter from "./src/middleware/rateLimiter.js";
+import dataRouter from "./src/routes/DataRoute.js";
 
 
 
@@ -26,6 +27,7 @@ app.use(morgan("dev"));
 app.use(errorConverter);
 app.use(errorHandler);
 app.use("/api/v1/auth",userRouter);
+app.use("/api/v1/stats",dataRouter)
 
 app.get('/', (req, res) => {
   res.json({ 
