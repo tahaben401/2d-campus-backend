@@ -5,7 +5,7 @@ import morgan from "morgan";
 import errorHandler from "./src/middleware/errorHandler.js";
 import errorConverter from "./src/middleware/errorConverter.js";
 import userRouter from "./src/routes/authRouter.js";
-
+import cors from "cors"
 
 
 
@@ -14,6 +14,11 @@ const PORT = process.env.PORT || 3000 ;
 const TABLE_NAME = 'uv_ds_reservsalle';
 const JSON_FILE_PATH = 'C:/Users/anas/Documents/so/new wallpapers/donnesdeschambresdetoutlecampus/uv_ds_reservsalle.json';
 // Middleware
+
+app.use(cors({
+  origin: "http://localhost:5173",  
+  credentials: true,                
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
