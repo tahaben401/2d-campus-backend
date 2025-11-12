@@ -93,8 +93,20 @@ const login = async (req, res) => {
         });
     }
 };
-
+const logout = (req, res) => {
+    res.clearCookie("jwt", {
+      httpOnly: true,
+      secure: false,  // change to true in production (HTTPS)
+      sameSite: "lax",
+    });
+  
+    return res.json({
+      status: 200,
+      message: "Logged out successfully",
+    });
+  };
 export default {
     register,
     login,
+    logout
 };
