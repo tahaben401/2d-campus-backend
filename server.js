@@ -6,6 +6,7 @@ import errorHandler from "./src/middleware/errorHandler.js";
 import errorConverter from "./src/middleware/errorConverter.js";
 import userRouter from "./src/routes/authRouter.js";
 import cors from "cors"
+import rateLimiter from "./src/middleware/rateLimiter.js";
 
 
 
@@ -13,17 +14,6 @@ const app = express();
 const PORT = process.env.PORT || 3000 ;
 const TABLE_NAME = 'uv_ds_reservsalle';
 const JSON_FILE_PATH = 'C:/Users/anas/Documents/so/new wallpapers/donnesdeschambresdetoutlecampus/uv_ds_reservsalle.json';
-const corsOptions = {
-  origin : (origin, callback) => {
-      if(whiteList.indexOf(origin) !== -1 || !origin){
-          callback(null, true);
-      }
-      else{
-         callback(new Error('Not Allowed by CROS')) ;
-      }
-  },
-  optionsSuccessStatus: 200, // For legacy browser support, keep this set to 200
-}
 // Middleware
 
 app.use(cors({
