@@ -1,0 +1,238 @@
+[
+  {
+    "type": "header",
+    "version": "1.0.0",
+    "comment": "Table des chambres du campus universitaire"
+  },
+  {
+    "type": "database",
+    "name": "digitamdvcrm"
+  },
+  {
+    "type": "table",
+    "name": "chambres",
+    "database": "digitamdvcrm",
+    "data": [
+      {
+        "numero_chambre": "102",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "103",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "104",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "105",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "106",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "108",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "109",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "110",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "112",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "115",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "118",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "120",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "201",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "203",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "204",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "205",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "206",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "207",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "208",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "209",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "210",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "212",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "215",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "220",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "301",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "302",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "305",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "307",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "310",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "312",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "318",
+        "etat": "Occupée",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "320",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "325",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "330",
+        "etat": "Occupée",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "101",
+        "etat": "Disponible",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "107",
+        "etat": "Disponible",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "111",
+        "etat": "En maintenance",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "113",
+        "etat": "Disponible",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "202",
+        "etat": "En maintenance",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "211",
+        "etat": "Disponible",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "213",
+        "etat": "Disponible",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "303",
+        "etat": "Disponible",
+        "surface_m2": 22
+      },
+      {
+        "numero_chambre": "306",
+        "etat": "Disponible",
+        "surface_m2": 15
+      },
+      {
+        "numero_chambre": "315",
+        "etat": "En maintenance",
+        "surface_m2": 22
+      }
+    ]
+  }
+]

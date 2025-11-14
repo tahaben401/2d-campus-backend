@@ -1,0 +1,525 @@
+[
+    {
+      "type": "header",
+      "version": "5.2.2",
+      "comment": "Export to JSON plugin for PHPMyAdmin"
+    },
+    {
+      "type": "database",
+      "name": "digitamdvcrm"
+    },
+    {
+      "type": "table",
+      "name": "uv_ds_salle",
+      "database": "digitamdvcrm",
+      "data": [
+        {
+          "rowid": "9",
+          "num": "UG3-33/L1",
+          "label": "UG3-33/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "10",
+          "num": "UG3-33/L2",
+          "label": "UG3-33/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "En maintenance",
+          "entity": "1"
+        },
+        {
+          "rowid": "11",
+          "num": "UG3-35/L1",
+          "label": "UG3-35/L1",
+          "description": "Laboratoire informatique",
+          "dimention": "12,10,3,0",
+          "surface": "120,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "12",
+          "num": "UG3-35/L2",
+          "label": "UG3-35/L2",
+          "description": "Laboratoire informatique",
+          "dimention": "12,10,3,0",
+          "surface": "120,0",
+          "category": "1",
+          "etat": "Occupé",
+          "entity": "1"
+        },
+        {
+          "rowid": "13",
+          "num": "UG3-37/L1",
+          "label": "UG3-37/L1",
+          "description": "Salle de réunion",
+          "dimention": "6,5,3,0",
+          "surface": "30,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "14",
+          "num": "UG3-37/L2",
+          "label": "UG3-37/L2",
+          "description": "Salle de réunion",
+          "dimention": "6,5,3,0",
+          "surface": "30,0",
+          "category": "1",
+          "etat": "Indisponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "15",
+          "num": "UG3-39/L1",
+          "label": "UG3-39/L1",
+          "description": "Bureau administratif",
+          "dimention": "5,5,3,0",
+          "surface": "25,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "16",
+          "num": "UG3-39/L2",
+          "label": "UG3-39/L2",
+          "description": "Bureau administratif",
+          "dimention": "5,5,3,0",
+          "surface": "25,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "17",
+          "num": "UG3-41/L1",
+          "label": "UG3-41/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "En maintenance",
+          "entity": "1"
+        },
+        {
+          "rowid": "18",
+          "num": "UG3-41/L2",
+          "label": "UG3-41/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "19",
+          "num": "UG3-43/L1",
+          "label": "UG3-43/L1",
+          "description": "Laboratoire de physique",
+          "dimention": "15,10,3,0",
+          "surface": "150,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "21",
+          "num": "UG3-43/L2",
+          "label": "UG3-43/L2",
+          "description": "Laboratoire de physique",
+          "dimention": "15,10,3,0",
+          "surface": "150,0",
+          "category": "1",
+          "etat": "Occupé",
+          "entity": "1"
+        },
+        {
+          "rowid": "22",
+          "num": "UG3-45/L1",
+          "label": "UG3-45/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "23",
+          "num": "UG3-45/L2",
+          "label": "UG3-45/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "24",
+          "num": "UG3-47/L1",
+          "label": "UG3-47/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "En maintenance",
+          "entity": "1"
+        },
+        {
+          "rowid": "25",
+          "num": "UG3-47/L2",
+          "label": "UG3-47/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "26",
+          "num": "UG3-49/L1",
+          "label": "UG3-49/L1",
+          "description": "Bureau administratif",
+          "dimention": "5,5,3,0",
+          "surface": "25,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "27",
+          "num": "UG3-49/L2",
+          "label": "UG3-49/L2",
+          "description": "Bureau administratif",
+          "dimention": "5,5,3,0",
+          "surface": "25,0",
+          "category": "1",
+          "etat": "Occupé",
+          "entity": "1"
+        },
+        {
+          "rowid": "28",
+          "num": "UG3-51/L1",
+          "label": "UG3-51/L1",
+          "description": "Salle de réunion",
+          "dimention": "6,5,3,0",
+          "surface": "30,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "29",
+          "num": "UG3-51/L2",
+          "label": "UG3-51/L2",
+          "description": "Salle de réunion",
+          "dimention": "6,5,3,0",
+          "surface": "30,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "30",
+          "num": "UG3-53/L1",
+          "label": "UG3-53/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Occupé",
+          "entity": "1"
+        },
+        {
+          "rowid": "31",
+          "num": "UG3-53/L2",
+          "label": "UG3-53/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "34",
+          "num": "UG3-55/L1",
+          "label": "UG3-55/L1",
+          "description": "Laboratoire de chimie",
+          "dimention": "15,10,3,0",
+          "surface": "150,0",
+          "category": "1",
+          "etat": "Indisponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "35",
+          "num": "UG3-55/L2",
+          "label": "UG3-55/L2",
+          "description": "Laboratoire de chimie",
+          "dimention": "15,10,3,0",
+          "surface": "150,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "36",
+          "num": "UG3-57/L1",
+          "label": "UG3-57/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "37",
+          "num": "UG3-57/L2",
+          "label": "UG3-57/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "38",
+          "num": "UG3-59/L1",
+          "label": "UG3-59/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Occupé",
+          "entity": "1"
+        },
+        {
+          "rowid": "39",
+          "num": "UG3-59/L2",
+          "label": "UG3-59/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "40",
+          "num": "UG3-61/L1",
+          "label": "UG3-61/L1",
+          "description": "Salle de réunion",
+          "dimention": "6,5,3,0",
+          "surface": "30,0",
+          "category": "1",
+          "etat": "En maintenance",
+          "entity": "1"
+        },
+        {
+          "rowid": "41",
+          "num": "UG3-61/L2",
+          "label": "UG3-61/L2",
+          "description": "Salle de réunion",
+          "dimention": "6,5,3,0",
+          "surface": "30,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "42",
+          "num": "UG3-63/L1",
+          "label": "UG3-63/L1",
+          "description": "Bureau administratif",
+          "dimention": "5,5,3,0",
+          "surface": "25,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "43",
+          "num": "UG3-63/L2",
+          "label": "UG3-63/L2",
+          "description": "Bureau administratif",
+          "dimention": "5,5,3,0",
+          "surface": "25,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "44",
+          "num": "UG3-65/L1",
+          "label": "UG3-65/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Occupé",
+          "entity": "1"
+        },
+        {
+          "rowid": "45",
+          "num": "UG3-65/L2",
+          "label": "UG3-65/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "46",
+          "num": "UG3-67/L1",
+          "label": "UG3-67/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "47",
+          "num": "UG3-67/L2",
+          "label": "UG3-67/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "48",
+          "num": "UG3-69/L1",
+          "label": "UG3-69/L1",
+          "description": "Laboratoire informatique",
+          "dimention": "12,10,3,0",
+          "surface": "120,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "49",
+          "num": "UG3-69/L2",
+          "label": "UG3-69/L2",
+          "description": "Laboratoire informatique",
+          "dimention": "12,10,3,0",
+          "surface": "120,0",
+          "category": "1",
+          "etat": "En maintenance",
+          "entity": "1"
+        },
+        {
+          "rowid": "50",
+          "num": "UG3-71/L1",
+          "label": "UG3-71/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "51",
+          "num": "UG3-71/L2",
+          "label": "UG3-71/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "52",
+          "num": "UG3-73/L1",
+          "label": "UG3-73/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Occupé",
+          "entity": "1"
+        },
+        {
+          "rowid": "53",
+          "num": "UG3-73/L2",
+          "label": "UG3-73/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "54",
+          "num": "UG3-75/L1",
+          "label": "UG3-75/L1",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "55",
+          "num": "UG3-75/L2",
+          "label": "UG3-75/L2",
+          "description": "Salle de cours standard, Bâtiment UG3",
+          "dimention": "10,8,3,0",
+          "surface": "80,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "56",
+          "num": "UG3-101/L1",
+          "label": "UG3-101/L1",
+          "description": "Amphithéâtre A",
+          "dimention": "20,15,5,0",
+          "surface": "300,0",
+          "category": "1",
+          "etat": "Indisponible",
+          "entity": "1"
+        },
+        {
+          "rowid": "57",
+          "num": "UG3-103/L1",
+          "label": "UG3-103/L1",
+          "description": "Salle de conférence",
+          "dimention": "12,10,3,0",
+          "surface": "120,0",
+          "category": "1",
+          "etat": "Disponible",
+          "entity": "1"
+        }
+      ]
+    }
+  ]
+  
