@@ -27,7 +27,8 @@ app.use(morgan("dev"));
 app.use(errorConverter);
 app.use(errorHandler);
 app.use("/api/v1/auth",userRouter);
-app.use("/api/v1/stats",dataRouter)
+app.use("/api/v1/stats",dataRouter);
+app.use("/api/v1/logement",logementrouter)
 
 app.get('/', (req, res) => {
   res.json({ 
