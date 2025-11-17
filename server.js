@@ -10,7 +10,6 @@ import rateLimiter from "./src/middleware/rateLimiter.js";
 import path from "path";
 import logementrouter from "./src/routes/logementsRouter.js";
 import dataRouter from "./src/routes/DataRoute.js";
-import logementrouter from "./src/routes/logementsRouter.js";
 
 
 
@@ -31,7 +30,7 @@ app.use(errorConverter);
 app.use(errorHandler);
 app.use("/api/v1/auth",userRouter);
 app.use("/api/v1/stats",dataRouter);
-app.use("/api/logement",logementrouter)
+app.use("/api/v1/logement",logementrouter)
 
 app.get('/', (req, res) => {
   res.json({ 
