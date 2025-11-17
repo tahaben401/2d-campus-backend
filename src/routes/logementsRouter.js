@@ -10,3 +10,4 @@ logementrouter.get("/detail_chambre", getDetailsCompletsChambres);
 
 export default logementrouter;
 
+
