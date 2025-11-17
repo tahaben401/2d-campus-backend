@@ -8,7 +8,7 @@ import userRouter from "./src/routes/authRouter.js";
 import cors from "cors"
 import rateLimiter from "./src/middleware/rateLimiter.js";
 import dataRouter from "./src/routes/DataRoute.js";
-
+import logementrouter from "./src/routes/logementsRouter.js";
 
 
 const app = express();
