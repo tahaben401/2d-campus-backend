@@ -10,7 +10,7 @@ import rateLimiter from "./src/middleware/rateLimiter.js";
 import path from "path";
 import logementrouter from "./src/routes/logementsRouter.js";
 import dataRouter from "./src/routes/DataRoute.js";
-
+import logementrouter from "./src/routes/logementsRouter.js";
 
 
 
