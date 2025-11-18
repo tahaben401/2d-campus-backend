@@ -52,6 +52,7 @@ Statistiques globales des logements:
     
     return documents
 
+
 def fetch_chambres():
     print("Appel à /api/logement/detail_chambre...")
     response = requests.get("http://localhost:3000/api/v1/logement/detail_chambre", timeout=10)
@@ -100,9 +101,10 @@ Chambre numéro {numero}:
     return documents
 
 try:
+    
     stats_docs = fetch_statistiques()
     chambres_docs = fetch_chambres()
-    all_docs = stats_docs + chambres_docs
+    all_docs = stats_docs + chambres_docs 
 except Exception as e:
     print(f"❌ ERREUR: {e}")
     sys.exit(1)
@@ -113,14 +115,14 @@ if not all_docs:
 
 print(f"✅ {len(all_docs)} documents chargés")
 
-# ==================== CONFIGURATION RAG ====================
-embedding_function = OllamaEmbeddings(model="nomic-embed-text")
+
+embedding_function = OllamaEmbeddings(model="bge-m3")
 vectorstore = Chroma.from_documents(
     documents=all_docs,
     embedding=embedding_function,
-    persist_directory="./chroma_db_logements"
+    persist_directory="./chroma_db_Fort"
 )
-retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 70})
+retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 350})
 
 GEMINI_API_KEY = "AIzaSyDI5_RcZbF0BUHLHi2OP-z-36yg2cfu3fo"
 llm = ChatGoogleGenerativeAI(
@@ -262,6 +264,6 @@ def terminal_mode():
 
 if __name__ == "__main__":
     import uvicorn
-    print("\n🚀 Démarrage du serveur FastAPI sur http://localhost:8000")
-    print("📖 Documentation: http://localhost:8000/docs\n")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    print("\n🚀 Démarrage du serveur FastAPI sur http://localhost:8001")
+    print("📖 Documentation: http://localhost:8001/docs\n")
+    uvicorn.run(app, host="0.0.0.0", port=8001)
