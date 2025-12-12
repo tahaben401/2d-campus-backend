@@ -1,0 +1,21 @@
+﻿Name: langchain-google-genai
+Version: 3.0.3
+Summary: An integration package connecting Google's genai package and LangChain
+Home-page: https://docs.langchain.com/oss/python/integrations/providers/google
+Author: 
+Author-email: 
+License: MIT
+Location: C:\Users\saada\AppData\Roaming\Python\Python312\site-packages
+Requires: filetype, google-ai-generativelanguage, langchain-core, pydantic
+Required-by: 
+---
+Name: google-generativeai
+Version: 0.8.3
+Summary: Google Generative AI High level API client library and tools.
+Home-page: https://github.com/google/generative-ai-python
+Author: Google LLC
+Author-email: googleapis-packages@google.com
+License: Apache 2.0
+Location: C:\Users\saada\AppData\Roaming\Python\Python312\site-packages
+Requires: google-ai-generativelanguage, google-api-core, google-api-python-client, google-auth, protobuf, pydantic, tqdm, typing-extensions
+Required-by: 

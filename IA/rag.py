@@ -15,7 +15,7 @@ from langchain_core.runnables import RunnablePassthrough
 
 print("--- Démarrage de l'API RAG ---")
 
-# ==================== CHARGEMENT DES DONNÉES ====================
+
 def fetch_statistiques():
     print("Appel à /api/logement...")
     response = requests.get("http://localhost:3000/api/v1/logement", timeout=10)
@@ -99,15 +99,56 @@ Chambre numéro {numero}:
             documents.append(doc)
     
     return documents
+def fetch_chambres_par_batiment(batiment):
+    print(f"Appel à /api/logement/chambres/batiment/{batiment}...")
+    
+    url = f"http://localhost:3000/api/v1/logement/batiment/{batiment}"
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    
+    data = response.json()
 
-try:
+    documents = []
+    if data.get("status") == 200 and "data" in data:
+        chambres = data["data"]
+        print(f"-> Trouvé {len(chambres)} chambres dans le bâtiment {batiment}")
+
+        for c in chambres:
+            content = f"""
+Chambre {c['numero_chambre']} (Bâtiment {batiment}) :
+- État : {c['etat']}
+- Surface : {c['surface']} m²
+- Type : {c['type_chambre']}
+- Étage : {c['etage']}
+- Occupant : {c['etudiant_nom']}
+            """.strip()
+
+            doc = Document(
+                page_content=content,
+                metadata={
+                    "source": "api_chambres_batiment",
+                    "batiment": batiment,
+                    "numero_chambre": c["numero_chambre"],
+                    "etat": c["etat"],
+                    "etage": c["etage"],
+                    "type_chambre": c["type_chambre"],
+                    "occupant": c["etudiant_nom"]
+                }
+            )
+            documents.append(doc)
+
+    return documents
+batiments = ["A", "B", "C", "D"]
+
+docs_par_batiment = []
+for b in batiments:
+    docs_par_batiment.extend(fetch_chambres_par_batiment(b))
+
     
     stats_docs = fetch_statistiques()
     chambres_docs = fetch_chambres()
-    all_docs = stats_docs + chambres_docs 
-except Exception as e:
-    print(f"❌ ERREUR: {e}")
-    sys.exit(1)
+    all_docs = stats_docs + chambres_docs + docs_par_batiment
+
 
 if not all_docs:
     print("❌ ERREUR: Aucune donnée chargée")
@@ -120,7 +161,7 @@ embedding_function = OllamaEmbeddings(model="bge-m3")
 vectorstore = Chroma.from_documents(
     documents=all_docs,
     embedding=embedding_function,
-    persist_directory="./chroma_db_Fort"
+    persist_directory="./chroma_db_Fort_F"
 )
 retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 350})
 
