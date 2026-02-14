@@ -4,6 +4,8 @@ import ApiError from "../utils/ApiError.js";
 import encryptPassword from "../utils/encryptPassword.js"
 import isPasswordMatch from "../utils/isPasswordMatch.js";
 import { supabase } from "../utils/supabase.js";
+import { registerSchema, loginSchema } from "../utils/authValidation.js";
+
 const jwtSecret = process.env.JWT_SECRET;
 const COOKIE_EXPIRATION_DAYS = 90;
 const expirationDate = new Date(
@@ -13,27 +15,39 @@ const cookieOptions = {
     expires: expirationDate,
     secure: false,
     httpOnly: true,
+    sameSite: 'lax'
 };
-const register = async (req, res) => {
+
+const register = async (req, res, next) => {
     try {
+        // Input Validation
+        const { error: validationError } = registerSchema.validate(req.body);
+        if (validationError) {
+            throw new ApiError(400, validationError.details[0].message);
+        }
+
         const { name, email, password } = req.body;
         const { data } = await supabase
             .from('users')
             .select('email')
             .eq('email', email)
-        const userExists =  data;
-        if (userExists && userExists.length>0) {
+        const userExists = data;
+        if (userExists && userExists.length > 0) {
             throw new ApiError(400, "User already exists!");
         }
-        const { data:user,error } = await supabase
+        const { data: user, error } = await supabase
             .from('users')
-            .insert({ 
+            .insert({
                 name,
                 email,
-                password: await encryptPassword(password) 
+                password: await encryptPassword(password)
             })
             .select()
-        
+            .single(); // Ensure we get a single object back
+
+        if (error || !user) {
+            throw new ApiError(500, "Registration failed: " + (error?.message || "Unknown error"));
+        }
 
         const userData = {
             name: user.name,
@@ -46,8 +60,10 @@ const register = async (req, res) => {
             data: userData,
         });
     } catch (error) {
-        return res.json({
-            status: 500,
+        // Use next(error) if you want to use the global error handler, or keep this if you prefer custom json response
+        // But consistent error handling is better. For now keeping structure but fixing validation
+        return res.status(error.statusCode || 500).json({
+            status: error.statusCode || 500,
             message: error.message,
         });
     }
@@ -58,21 +74,27 @@ const createSendToken = async (user, res) => {
     const token = jwt.sign({ name, email, id }, jwtSecret, {
         expiresIn: "1d",
     });
-    
+
     res.cookie("jwt", token, cookieOptions);
 
     return token;
 };
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
     try {
+        // Input Validation
+        const { error: validationError } = loginSchema.validate(req.body);
+        if (validationError) {
+            throw new ApiError(400, validationError.details[0].message);
+        }
+
         const { email, password } = req.body;
-        const { data:user } = await supabase
-        .from('users')
-        .select('id, name, email, password')
-        .eq('email', email)
-        .maybeSingle()
-         if (
+        const { data: user } = await supabase
+            .from('users')
+            .select('id, name, email, password')
+            .eq('email', email)
+            .maybeSingle()
+        if (
             !user ||
             !(await isPasswordMatch(password, user.password))
         ) {
@@ -87,24 +109,26 @@ const login = async (req, res) => {
             token,
         });
     } catch (error) {
-        return res.json({
-            status: 500,
+        return res.status(error.statusCode || 500).json({
+            status: error.statusCode || 500,
             message: error.message,
         });
     }
 };
+
 const logout = (req, res) => {
     res.clearCookie("jwt", {
-      httpOnly: true,
+        httpOnly: true,
       secure: false,  // change to true in production (HTTPS)
       sameSite: "lax",
     });
-  
+
     return res.json({
-      status: 200,
-      message: "Logged out successfully",
+        status: 200,
+        message: "Logged out successfully",
     });
-  };
+};
+
 export default {
     register,
     login,

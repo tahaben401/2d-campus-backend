@@ -1,4 +1,5 @@
 import { supabase } from "../utils/supabase.js";
+import ApiError from "../utils/ApiError.js";
 export const getLogements = async (req, res,next) =>{
     try{
         const{count:Occupée,error:errorOcupée} = await supabase
@@ -6,14 +7,14 @@ export const getLogements = async (req, res,next) =>{
         .select('*',{ count: 'exact' , head: true })
         .eq('etat','Occupée');
         if (errorOcupée) {
-            return next(createError(500, `Erreur comptage occupées: ${errorOcupée.message}`));
+            return next(new ApiError(500, `Erreur comptage occupées: ${errorOcupée.message}`));
         }
         const{count:Disponible,error:errorDisponible} = await supabase
         .from('chambres')
         .select('*',{ count: 'exact' , head: true })
         .eq('etat','Disponible');
         if (errorDisponible) {
-            return next(createError(500, `Erreur comptage disponibles: ${errorDisponible.message}`));
+            return next(new ApiError(500, `Erreur comptage disponibles: ${errorDisponible.message}`));
         }
         return res.status(200).json({
             status: 200,
@@ -24,7 +25,7 @@ export const getLogements = async (req, res,next) =>{
             message: "Logements counts retrieved successfully"
         });
     }catch(error){
-        return next(createError(500, `Erreur serveur: ${error.message}`));
+        return next(new ApiError(500, `Erreur serveur: ${error.message}`));
         }
     }
 
@@ -34,14 +35,14 @@ export const getDetailsCompletsChambres = async (req, res, next) =>{
         .from('chambres')
         .select('*');
         if (errorchambres) {
-            return next(createError(500, `Erreur récupération chambres: ${errorchambres.message}`));
+            return next(new ApiError(500, `Erreur récupération chambres: ${errorchambres.message}`));
         }
 
         const {data:etudiants,error:erroretudiants} = await supabase
         .from('etudiants_logement')
         .select('*');
         if(erroretudiants){
-            return next(createError(500, `Erreur récupération étudiants: ${erroretudiants.message}`));
+            return next(new ApiError(500, `Erreur récupération étudiants: ${erroretudiants.message}`));
         }
         const resultat = chambres.map(chambre => {
            
@@ -65,7 +66,7 @@ export const getDetailsCompletsChambres = async (req, res, next) =>{
         });
 
     }catch(error){
-        return next(createError(500, `Erreur serveur: ${error.message}`));
+        return next(new ApiError(500, `Erreur serveur: ${error.message}`));
     }
     
 }
