@@ -3,6 +3,15 @@ import { supabase } from '../utils/supabase.js';
 import ApiError from '../utils/ApiError.js';
 
 const protect = async (req, res, next) => {
+    // Bypass for RAG model with API Key
+    const apiKey = req.headers['x-api-key'];
+    const RAG_SHARED_SECRET = process.env.RAG_API_KEY || "secure_rag_key_12345";
+
+    if (apiKey === RAG_SHARED_SECRET) {
+        req.user = { id: 'system_rag', role: 'admin', name: 'RAG Model' };
+        return next();
+    }
+
     let token;
 
     if (

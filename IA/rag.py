@@ -18,7 +18,8 @@ print("--- Démarrage de l'API RAG ---")
 # ==================== CHARGEMENT DES DONNÉES ====================
 def fetch_statistiques():
     print("Appel à /api/logement...")
-    response = requests.get("http://localhost:3000/api/v1/logement", timeout=10)
+    headers = {"x-api-key": "secure_rag_key_12345"}
+    response = requests.get("http://localhost:3000/api/v1/logement", headers=headers, timeout=10)
     response.raise_for_status()
     data = response.json()
     
@@ -54,7 +55,8 @@ Statistiques globales des logements:
 
 def fetch_chambres():
     print("Appel à /api/logement/detail_chambre...")
-    response = requests.get("http://localhost:3000/api/v1/logement/detail_chambre", timeout=10)
+    headers = {"x-api-key": "secure_rag_key_12345"}
+    response = requests.get("http://localhost:3000/api/v1/logement/detail_chambre", headers=headers, timeout=10)
     response.raise_for_status()
     data = response.json()
     
@@ -122,6 +124,7 @@ vectorstore = Chroma.from_documents(
 )
 retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 70})
 
+# hardcoded api key
 GEMINI_API_KEY = "AIzaSyDI5_RcZbF0BUHLHi2OP-z-36yg2cfu3fo"
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
