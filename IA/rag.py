@@ -1,6 +1,11 @@
 import os 
 import requests
 import sys
+from dotenv import load_dotenv
+
+# Load environment variables from the parent directory
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
+
 from langchain_core.documents import Document
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -15,9 +20,10 @@ from langchain_core.runnables import RunnablePassthrough
 
 print("--- Démarrage de l'API RAG ---")
 
-# ==================== CHARGEMENT DES DONNÉES ====================
+
 def fetch_statistiques():
     print("Appel à /api/logement...")
+    #api_key = os.getenv("RAG_API_KEY", "secure_rag_key_12345")
     headers = {"x-api-key": "secure_rag_key_12345"}
     response = requests.get("http://localhost:3000/api/v1/logement", headers=headers, timeout=10)
     response.raise_for_status()
@@ -53,8 +59,10 @@ Statistiques globales des logements:
     
     return documents
 
+
 def fetch_chambres():
     print("Appel à /api/logement/detail_chambre...")
+    #api_key = os.getenv("RAG_API_KEY", "secure_rag_key_12345")
     headers = {"x-api-key": "secure_rag_key_12345"}
     response = requests.get("http://localhost:3000/api/v1/logement/detail_chambre", headers=headers, timeout=10)
     response.raise_for_status()
@@ -100,14 +108,58 @@ Chambre numéro {numero}:
             documents.append(doc)
     
     return documents
+def fetch_chambres_par_batiment(batiment):
+    print(f"Appel à /api/logement/chambres/batiment/{batiment}...")
+    
+    #api_key = os.getenv("RAG_API_KEY", "secure_rag_key_12345")
+    headers = {"x-api-key":"secure_rag_key_12345"}
+    url = f"http://localhost:3000/api/v1/logement/batiment/{batiment}"
+    response = requests.get(url, headers=headers, timeout=10)
+    response.raise_for_status()
+    
+    data = response.json()
 
-try:
+    documents = []
+    if data.get("status") == 200 and "data" in data:
+        chambres = data["data"]
+        print(f"-> Trouvé {len(chambres)} chambres dans le bâtiment {batiment}")
+
+        for c in chambres:
+            content = f"""
+Chambre {c['numero_chambre']} (Bâtiment {batiment}) :
+- État : {c['etat']}
+- Surface : {c['surface']} m²
+- Type : {c['type_chambre']}
+- Étage : {c['etage']}
+- Occupant : {c['etudiant_nom']}
+            """.strip()
+
+            doc = Document(
+                page_content=content,
+                metadata={
+                    "source": "api_chambres_batiment",
+                    "batiment": batiment,
+                    "numero_chambre": c["numero_chambre"],
+                    "etat": c["etat"],
+                    "etage": c["etage"],
+                    "type_chambre": c["type_chambre"],
+                    "occupant": c["etudiant_nom"]
+                }
+            )
+            documents.append(doc)
+
+    return documents
+batiments = ["A", "B", "C", "D"]
+
+docs_par_batiment = []
+for b in batiments:
+    docs_par_batiment.extend(fetch_chambres_par_batiment(b))
+
+    
     stats_docs = fetch_statistiques()
     chambres_docs = fetch_chambres()
-    all_docs = stats_docs + chambres_docs
-except Exception as e:
-    print(f"❌ ERREUR: {e}")
-    sys.exit(1)
+    all_docs = stats_docs + chambres_docs + docs_par_batiment
+
 
 if not all_docs:
     print("❌ ERREUR: Aucune donnée chargée")
@@ -115,16 +167,15 @@ if not all_docs:
 
 print(f"✅ {len(all_docs)} documents chargés")
 
-# ==================== CONFIGURATION RAG ====================
-embedding_function = OllamaEmbeddings(model="nomic-embed-text")
+
+embedding_function = OllamaEmbeddings(model="bge-m3")
 vectorstore = Chroma.from_documents(
     documents=all_docs,
     embedding=embedding_function,
-    persist_directory="./chroma_db_logements"
+    persist_directory="./chroma_db_Fort_F"
 )
-retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 70})
+retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 350})
 
-# hardcoded api key
 GEMINI_API_KEY = "AIzaSyDI5_RcZbF0BUHLHi2OP-z-36yg2cfu3fo"
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
@@ -265,6 +316,6 @@ def terminal_mode():
 
 if __name__ == "__main__":
     import uvicorn
-    print("\n🚀 Démarrage du serveur FastAPI sur http://localhost:8000")
-    print("📖 Documentation: http://localhost:8000/docs\n")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    print("\n🚀 Démarrage du serveur FastAPI sur http://localhost:8001")
+    print("📖 Documentation: http://localhost:8001/docs\n")
+    uvicorn.run(app, host="0.0.0.0", port=8001)
